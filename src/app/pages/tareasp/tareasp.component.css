@@ -1,0 +1,131 @@
+body {
+    text-align: center;
+    height: 100;
+    margin: 0; /* Corregido el valor de margin */
+    background: #161844;
+    padding: 20px;
+    box-sizing: border-box; /* Incluir el padding en el tamaño total */
+
+}
+footer{
+    height: 100;
+    margin: 0; /* Corregido el valor de margin */
+    background: #161844;
+    padding: 20px;
+    box-sizing: border-box; 
+}
+
+.titulo{
+    color: #FFF;
+
+}
+.sub{
+    color: #FFF;
+}
+
+  a {
+    outline: none;
+    text-decoration: none;
+  }
+  
+/* Estilos para el menú */
+.menu {
+    display: flex;
+    justify-content: center;
+    padding: 1.5%;
+    background-color: #161844;
+    border-radius: 30px;
+    box-shadow: 2px 2px 2px 2px #ea0190;
+  }
+
+  .back{
+    background-color: #161844;
+    padding: 3%;
+  }
+
+  .identificador{
+    margin: 20px;
+    padding: 20px;
+    text-size-adjust: initial;
+  }
+  
+  /* Estilos para el menú en pantallas más pequeñas */
+  @media only screen and (max-width: 800px) {
+    .menu {
+      flex-direction: column;
+      align-items: center;
+      background-color: #161844;
+    }
+    .navbar-collapse {
+      margin-top: 10px; /* Espacio entre el botón del menú y el contenido */
+    }
+  }
+  
+
+
+  .button_slide {
+  color: #FFF;
+  border: 1px solid rgb(216, 2, 134);
+  border-radius: 20px;
+  padding: 18px 36px;
+  display: inline-block;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 14px;
+  letter-spacing: 1.25px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #D80286;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+.slide_down:hover {
+  box-shadow: inset 0 100px 0 0 #D80286;
+}
+
+.slide_right:hover {
+  box-shadow: inset 400px 0 0 0 #D80286;
+}
+
+.slide_left:hover {
+  box-shadow: inset 0 0 0 50px #D80286;
+}
+
+.slide_diagonal:hover {
+  box-shadow: inset 400px 50px 0 0 #D80286;
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+  }
+
+/*///////////////////////////////////////////////////*/
+
+
+/* Media queries para hacer el diseño responsive */
+@media only screen and (max-width: 100px) {
+    /* Estilos para pantallas más pequeñas */
+    .menu {
+      padding: 5%;
+      height: 35%;
+      width: 50%;
+      margin: 10px auto 0 auto; /* Ajusta este valor según sea necesario */
+      
+    }
+  
+    a {
+      outline: none;
+      text-decoration: none;
+    }
+  
+    .titulo {
+        font-size: 20px;
+    }
+  
+    .button_slide {
+        padding: 20px 25px;
+        font-size: 12px;
+    }
+  }
+  

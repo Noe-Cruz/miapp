@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "libros",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

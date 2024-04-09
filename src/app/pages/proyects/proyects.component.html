@@ -1,0 +1,152 @@
+<header>
+    <div class="back">
+        <div class="menu">
+            <div class="row">
+                <div class="col">
+                    <a class="button_slide slide_left" href="/tareas">Tareas</a>
+                </div>
+                <div class="col">
+                    <a href="/about" class="button_slide slide_left">About</a>
+                </div>
+                <div class="col">
+                    <a class="button_slide slide_left" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                        aria-controls="offcanvasExample">Insertar+</a>
+                    <div class="offcanvas offcanvas-start menu" tabindex="-1" id="offcanvasExample"
+                        aria-labelledby="offcanvasExampleLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title titulo" id="offcanvasExampleLabel">Inserta más proyectos</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+
+                            <form #ProyectoForm="ngForm" (ngSubmit)="submitForm()">
+                                <div>
+                                    <label for="validationServer01" class="form-label sub">Nombre del Proyecto</label>
+                                    <input type="text" class="form-control" id="validationServer01" name="nombre"
+                                        [(ngModel)]="proyecto.nombre" required placeholder="Proyecto 1">
+                                </div>
+                                <div>
+                                    <label for="validationServer02" class="form-label sub">Fecha limite</label>
+                                    <input type="date" class="form-control" name="fechai" [(ngModel)]="proyecto.fechal"
+                                        required>
+                                </div>
+                                <div>
+                                    <label for="validationServer03" class="form-label sub">Descripción del
+                                        proyecto</label>
+                                    <input type="text" class="form-control" name="fechaf"
+                                        [(ngModel)]="proyecto.descripcion" required
+                                        placeholder="Descripción del proyecto">
+                                </div>
+                                <div>
+                                    <label for="validationServer04" class="form-label sub">Responsable del
+                                        proyecto</label>
+                                    <input type="text" class="form-control" name="responsable"
+                                        [(ngModel)]="proyecto.responsable" required
+                                        placeholder="Nombre de quien realiza">
+                                </div>
+                                <div>
+                                    <label for="validationServer05" class="form-label sub">Estado del proyecto</label>
+                                    <select class="form-select" name="terminado" [(ngModel)]="proyecto.terminado"
+                                        required aria-placeholder="En curso">
+                                        <option [ngValue]="true">Terminado</option>
+                                        <option [ngValue]="false">En curso</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-success"
+                                        [disabled]="!ProyectoForm.valid">Insertar</button>
+                                    <button type="button" class="btn btn-warning" [disabled]="!ProyectoForm.valid"
+                                        (click)="updateProyecto()">Actualizar</button>
+                                    <button type="button" class="btn btn-danger"
+                                        (click)="deleteProyecto(proyecto.id)">Eliminar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <a type="button" class="button_slide slide_left" data-bs-toggle="modal"
+                        [attr.data-bs-target]="proyecto.terminado !== undefined && proyecto.terminado !== null ? '#exampleModal' : null">
+                        {{ proyecto.nombre ? proyecto.nombre : 'Selecciona una tarea' }}
+                        {{ proyecto.terminado !== undefined && proyecto.terminado !== null ? (proyecto.terminado ? ' -
+                        Terminado'
+                        : ' - En curso') : '' }}
+                    </a>
+
+                    <div class="modal fade container" id="exampleModal" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog container">
+                            <div class="modal-content menu">
+                                <div class="container">
+                                    <h1 class="fst-italic titulo">Lista de Proyectos</h1>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <button type="submit" class="btn btn-warning"
+                                                    (click)="updateProyecto()">Actualizar</button>
+                                            </td>
+
+                                            <td>
+                                                <button type="button" class="btn btn-danger"
+                                                    (click)="deleteProyecto(proyecto.id)"> <i
+                                                        class="bi bi-trash">Elininar</i></button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                    <h4 class="fst-italic font-monospace titulo">Alta de Proyectos</h4>
+                                    <div>
+                                        <p>
+                                            <label for="validationDefault01" class="form-label titulo">Nombre del
+                                                proyecto
+                                            </label>
+                                            <input type="text" class="form-control" id="validationDefault01"
+                                                value="Mark" [(ngModel)]="proyecto.nombre" required>
+                                        </p>
+                                        <p>
+                                            <label class="titulo">Fecha Limite</label>
+                                            <input type="date" class="form-control" [(ngModel)]="proyecto.fechal">
+                                        </p>
+                                        <p>
+                                            <label class="titulo">Responsable del proyecto</label>
+                                            <input type="text" class="form-control" [(ngModel)]="proyecto.responsable">
+                                        </p>
+                                        <p>
+                                            <label class="titulo">Estado del proyecto (en curso - terminada)</label>
+                                            <input type="text" class="form-control" [(ngModel)]="proyecto.terminado">
+                                        </p>
+                                        <p>
+                                            <label class="titulo">Descripción del proyecto</label>
+                                            <input type="text" class="form-control" [(ngModel)]="proyecto.descripcion">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+<body>
+
+    <div class="identificador" style="align-content: end; display: flex; flex-wrap: wrap;">
+        <ng-container *ngFor="let proyecto of proyectos; let i = index">
+            <a (click)="selectProyecto(proyecto)" class="button_slide slide_left"
+                style="margin-right: 20px; margin-bottom: 20px; flex: 0 0 calc(25% - 20px);">
+                <h2>Proyecto: </h2>
+                <p>{{proyecto.nombre}}</p>
+                <h2>Responsable</h2>
+                <p>{{proyecto.responsable}}</p>
+            </a>
+        </ng-container>
+    </div>
+
+</body>
+
+<footer></footer>

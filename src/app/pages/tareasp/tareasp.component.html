@@ -1,0 +1,152 @@
+<header>
+    <div class="back">
+        <div class="menu">
+            <div class="row">
+                <div class="col">
+                    <a class="button_slide slide_left" href="/proyectos">Proyectos</a>
+                </div>
+                <div class="col">
+                    <a href="/about" class="button_slide slide_left">About</a>
+                </div>
+                <div class="col">
+                    <a class="button_slide slide_left" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                        aria-controls="offcanvasExample">Insertar+</a>
+                    <div class="offcanvas offcanvas-start menu" tabindex="-1" id="offcanvasExample"
+                        aria-labelledby="offcanvasExampleLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title titulo" id="offcanvasExampleLabel">Inserta más Tareas</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+
+                            <form #tareaForm="ngForm" (ngSubmit)="submitForm()">
+                                <div>
+                                    <label for="validationServer01" class="form-label sub">Nombre de la tarea</label>
+                                    <input type="text" class="form-control" id="validationServer01" name="nombre"
+                                        [(ngModel)]="tarea.nombre" required placeholder="Tarea 1">
+                                </div>
+                                <div>
+                                    <label for="validationServer02" class="form-label sub">Fecha de Inicio</label>
+                                    <input type="date" class="form-control" name="fechai" [(ngModel)]="tarea.fechai"
+                                        required>
+                                </div>
+                                <div>
+                                    <label for="validationServer03" class="form-label sub">Fecha Final</label>
+                                    <input type="date" class="form-control" name="fechaf" [(ngModel)]="tarea.fechaf"
+                                        required>
+                                </div>
+                                <div>
+                                    <label for="validationServer04" class="form-label sub">Responsable de la tarea</label>
+                                    <input type="text" class="form-control" name="responsable"
+                                        [(ngModel)]="tarea.responsable" required placeholder="Nombre de quien realiza">
+                                </div>
+                                <div>
+                                    <label for="validationServer05" class="form-label sub">Estado de la tarea</label>
+                                    <select class="form-select" name="terminado" [(ngModel)]="tarea.terminado" required aria-placeholder="En curso" >
+                                        <option [ngValue]="true">Terminado</option>
+                                        <option [ngValue]="false">En curso</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="validationServer06" class="form-label sub">Descripción de la tarea</label>
+                                    <input type="text" class="form-control" name="descripcion"
+                                        [(ngModel)]="tarea.descripcion" required placeholder="Detalles de la tarea">
+                                </div>
+                                <br>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-success"
+                                        [disabled]="!tareaForm.valid">Insertar</button>
+                                    <button type="button" class="btn btn-warning" [disabled]="!tareaForm.valid"
+                                        (click)="updateTarea()">Actualizar</button>
+                                    <button type="button" class="btn btn-danger"
+                                        (click)="deleteTarea(tarea.id)">Eliminar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <a type="button" class="button_slide slide_left" data-bs-toggle="modal"
+                        [attr.data-bs-target]="tarea.terminado !== undefined && tarea.terminado !== null ? '#exampleModal' : null">
+                        {{ tarea.nombre ? tarea.nombre : 'Selecciona una tarea' }}
+                        {{ tarea.terminado !== undefined && tarea.terminado !== null ? (tarea.terminado ? ' - Terminado'
+                        : ' - En curso') : '' }}
+                    </a>
+
+                    <div class="modal fade container" id="exampleModal" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog container">
+                            <div class="modal-content menu">
+                                <div class="container">
+                                    <h1 class="fst-italic titulo">Lista de Tareas</h1>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <button type="submit" class="btn btn-warning"
+                                                    (click)="updateTarea()">Actualizar</button>
+                                            </td>
+
+                                            <td>
+                                                <button type="button" class="btn btn-danger"
+                                                    (click)="deleteTarea(tarea.id)"> <i
+                                                        class="bi bi-trash">Elininar</i></button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                    <h4 class="fst-italic font-monospace titulo">Alta de tareas</h4>
+                                    <div>
+                                        <p>
+                                            <label for="validationDefault01" class="form-label titulo">Nombre de la
+                                                tarea</label>
+                                            <input type="text" class="form-control" id="validationDefault01"
+                                                value="Mark" [(ngModel)]="tarea.nombre" required>
+                                        </p>
+                                        <p>
+                                            <label class="titulo">Fecha de Inicio</label>
+                                            <input type="date" class="form-control" [(ngModel)]="tarea.fechai">
+                                        </p>
+                                        <p>
+                                            <label class="titulo">Fecha Final</label>
+                                            <input type="date" class="form-control" [(ngModel)]="tarea.fechaf">
+                                        </p>
+                                        <p>
+                                            <label class="titulo">Responsable de la tarea</label>
+                                            <input type="text" class="form-control" [(ngModel)]="tarea.responsable">
+                                        </p>
+                                        <p>
+                                            <label class="titulo">Estado de la tarea (en curso - terminada)</label>
+                                            <input type="text" class="form-control" [(ngModel)]="tarea.terminado">
+                                        </p>
+                                        <p>
+                                            <label class="titulo">Descripción de la tarea</label>
+                                            <input type="text" class="form-control" [(ngModel)]="tarea.descripcion">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+<body>
+
+    <div class="identificador" style="align-content: end; display: flex; flex-wrap: wrap;">
+        <ng-container *ngFor="let tarea of tareas; let i = index">
+            <a (click)="selectTarea(tarea)" class="button_slide slide_left" style="margin-right: 20px; margin-bottom: 20px; flex: 0 0 calc(25% - 20px);">
+                <h2>Tarea: </h2> <p>{{tarea.nombre}}</p>
+                <h2>Responsable</h2>
+                <p>{{tarea.responsable}}</p>
+            </a>
+        </ng-container>
+    </div>
+    
+</body>
+
+<footer></footer>

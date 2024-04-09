@@ -1,0 +1,21 @@
+<body>
+
+  <div class="bord">
+      <h1 class="titulo">Registrate</h1>
+      <div class="container col-12">
+          <label for="email" class="subs">Email:</label>
+          <input type="email" class="form-control cajaText" id="email" name="email" placeholder="example@gmail.com" required
+              #email>
+              <br>
+          <label for="password" class="subs">Password:</label>
+          <input type="password" class="form-control cajaText" id="password" name="password" placeholder="Your password"
+              required #password>
+              <br>
+
+          <a type="click" (click)="signUp(email.value, password.value)" class="button_slide slide_left">Registrate</a>
+          <br /> <br />
+          <a href="/login" style="color: aliceblue;" class="button_slide slide_left">Inicia Sesión</a>
+      </div>
+  </div>
+
+</body>

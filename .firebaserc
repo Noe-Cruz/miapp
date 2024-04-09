@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "gestortp-42181": {
+      "hosting": {
+        "libros": [
+          "gestortp-42181"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "gestortp-42181"
+  }
+}

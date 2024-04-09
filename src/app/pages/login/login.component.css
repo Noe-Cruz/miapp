@@ -1,0 +1,101 @@
+body {
+  height: 100vh; /* vh en lugar de dvh */
+  margin: 10;
+  background: #161844;
+  padding: 20px;
+}
+
+.titulo {
+  padding: 5%;
+  color: hsl(0, 0%, 100%);
+  font-size: 60px;
+  text-shadow: 1px 2px 2px #FFF;
+  font-family: "Lucida Console,", Monaco, monospace;
+  text-align: center;
+
+}
+.subs{
+  padding: 1%;
+  color: #FFF;
+  font-family: "Lucida Console,", Monaco, monospace;
+}
+.bord {
+  width: 450px;
+  margin: 50px auto 0 auto;
+  box-shadow: 3px 3px 10px 3px #D80286;
+  padding: 5%;
+  border-radius: 40px;
+}
+
+.cajaText{
+box-shadow: 2px 2px #fd97d6;
+}
+
+.button_slide {
+  color: #FFF;
+  border: 2px solid rgb(216, 2, 134);
+  border-radius: 20px;
+  padding: 18px 36px;
+  display: inline-block;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #D80286;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+}
+.slide_down:hover {
+  box-shadow: inset 0 100px 0 0 #D80286;
+}
+
+.slide_right:hover {
+  box-shadow: inset 400px 0 0 0 #D80286;
+}
+
+.slide_left:hover {
+  box-shadow: inset 0 0 0 50px #D80286;
+}
+
+.slide_diagonal:hover {
+  box-shadow: inset 400px 50px 0 0 #D80286;
+}
+
+#outer {
+  width: 350px;
+  margin: 40px auto 0 auto;
+  text-align: center;
+}
+
+/* Media queries para hacer el diseño responsive */
+@media only screen and (max-width: 800px) {
+  /* Estilos para pantallas más pequeñas */
+  .bord {
+    padding: 5%;
+    height: 75%;
+    width: 100%;
+    margin: 80px auto 0 auto; /* Ajusta este valor según sea necesario */
+    
+  }
+
+  a {
+    outline: none;
+    text-decoration: none;
+  }
+
+  .titulo {
+      font-size: 40px;
+  }
+
+  .button_slide {
+      padding: 20px 25px;
+      font-size: 12px;
+  }
+}
+
